@@ -10,16 +10,20 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = [
-            'id',
-            'name',
-            'description',
-            'workspace',
-            'workspace_name',
-            'spaces_count',
-            'version',
-            'created_at',
-            'updated_at',
-        ]
+        'id',
+        'name',
+        'client_name',
+        'status',
+        'circulation_percent',
+        'max_buildable_area',
+        'description',
+        'workspace',
+        'workspace_name',
+        'spaces_count',
+        'version',
+        'created_at',
+        'updated_at',
+    ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'workspace_name', 'workspace', 'version']
     
     def get_spaces_count(self, obj):
@@ -51,15 +55,16 @@ class WorkspaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workspace
         fields = [
-            'id',
-            'name',
-            'description',
-            'owner',
-            'owner_username',
-            'projects_count',
-            'created_at',
-            'updated_at',
-        ]
+        'id',
+        'name',
+        'slug',
+        'description',
+        'owner',
+        'owner_username',
+        'projects_count',
+        'created_at',
+        'updated_at',
+    ]
         read_only_fields = ['id', 'owner', 'owner_username', 'created_at', 'updated_at']
     
     def get_projects_count(self, obj):
@@ -74,17 +79,19 @@ class SpaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Space
         fields = [
-            'id',
-            'name',
-            'description',
-            'project',
-            'project_name',
-            'width',
-            'length',
-            'version',
-            'created_at',
-            'updated_at',
-        ]
+        'id',
+        'name',
+        'space_type',
+        'floor',
+        'description',
+        'project',
+        'project_name',
+        'width',
+        'length',
+        'version',
+        'created_at',
+        'updated_at',
+    ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'project_name', 'project', 'version']
     
     def validate_width(self, value):
