@@ -1,0 +1,6 @@
+venv/
+venv_win/
+__pycache__/
+*.pyc
+db.sqlite3
+.env
